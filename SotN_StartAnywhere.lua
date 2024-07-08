@@ -1,6 +1,7 @@
 --[[
 	CV SotN - Start Anywhere
 	by: MottZilla
+	July 7th 2024
 ]]--
 
 ChosenStage = 0x1F
@@ -81,6 +82,11 @@ function SetStage()
 	ChosenStage = tonumber(ChosenStage)
 	memory.write_u8(0x1AF590,ChosenStage)
 	memory.write_u8(0x1AF594,ChosenStage)
+
+	memory.write_u16_le(0x100364,200)	-- HP
+	memory.write_u16_le(0x1003A4,200)	-- MP
+	memory.write_u16_le(0x1003AC,0x7BB4)	-- MP
+	memory.write_u16_le(0x1003C4,0x7BA8)	-- Hearts
 end
 
 function InMainMenu()

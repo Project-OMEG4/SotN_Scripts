@@ -44,7 +44,6 @@ for i=0, 4096 do
 	rec_map2[i] = 0
 end
 
-
 function AutoTimer()
 	local Zone = memory.read_u8(0x974A0,MainRAM)
 
@@ -133,8 +132,8 @@ function UpdateTimerAndText()
 	if(CheckSet == 0) then forms.drawText(pbLiveMap,230,500,"??? Checks",0xFF00FF00,16) end
 	if(CheckSet == 1) then forms.drawText(pbLiveMap,230,500,"Classic Checks",0xFF00FF00,16) end
 	if(CheckSet == 2) then forms.drawText(pbLiveMap,230,500,"Guarded Checks",0xFF00FF00,16) end
-	if(CheckSet == 3) then forms.drawText(pbLiveMap,230,500,"??? Checks",0xFF00FF00,16) end
-	if(CheckSet == 4) then forms.drawText(pbLiveMap,230,500,"??? Checks",0xFF00FF00,16) end
+	if(CheckSet == 3) then forms.drawText(pbLiveMap,230,500,"Equipment Checks",0xFF00FF00,16) end
+	if(CheckSet == 4) then forms.drawText(pbLiveMap,230,500,"Tourist Checks",0xFF00FF00,16) end
 
 	forms.refresh(pbLiveMap)
 end
@@ -261,7 +260,6 @@ print(stringbufA .. "," .. stringbufB)
 	if(curCastle == 2) then
 		rec_map2[castleX + (castleY*64)] = 1
 	end
-
 end
 
 function ChangeCastle()
@@ -346,7 +344,6 @@ function ChangeCastle()
 	forms.refresh(pbLiveMap)
 end
 
-
 function PictureBoxClick()
 	WX = forms.getMouseX(pbLiveMap)
 	WY = forms.getMouseY(pbLiveMap)
@@ -368,8 +365,10 @@ function PictureBoxClick()
 			rec_map2[i] = 0
 		end
 		RelicChecks()
-		if(CheckSet>=1) then KeyItemChecks() end
-		if(CheckSet>=2) then GuardedChecks() end
+		if(CheckSet>=1) then KeyItemChecks()   end
+		if(CheckSet>=2) then GuardedChecks()   end
+		if(CheckSet>=3) then EquipmentChecks() end
+		if(CheckSet>=4) then TouristChecks()   end
 		ChangeCastle()
 	end
 
@@ -380,10 +379,12 @@ function PictureBoxClick()
 			if(rec_map2[i] == 2) then rec_map2[i] = 0 end
 		end
 		CheckSet = CheckSet + 1
-		if(CheckSet>2) then CheckSet = 1 end
+		if(CheckSet>4) then CheckSet = 1 end
 		RelicChecks()
-		if(CheckSet>=1) then KeyItemChecks() end
-		if(CheckSet>=2) then GuardedChecks() end
+		if(CheckSet>=1) then KeyItemChecks()   end
+		if(CheckSet>=2) then GuardedChecks()   end
+		if(CheckSet>=3) then EquipmentChecks() end
+		if(CheckSet>=4) then TouristChecks()   end
 		ChangeCastle()
 	end
 
@@ -426,14 +427,14 @@ AddCheckpx(65,120,1)	-- Bat Card
 AddCheckpx(195,20,1)	-- Ghost Card
 AddCheckpx(260,75,1)	-- Faerie Card
 AddCheckpx(145,205,1)	-- Demon Card
---AddCheckpx(165,75,1)	-- Sword Card (JP)
 AddCheckpx(100,75,1)	-- Sprite Card (Sword Card US)
---AddCheckpx(95,85,1)	-- Nosedevil Card
 AddCheckpx(195,200,2)	-- Heart of Vlad
 AddCheckpx(25,150,2)	-- Tooth of Vlad
 AddCheckpx(220,185,2)	-- Rib of Vlad
 AddCheckpx(115,215,2)	-- Ring of Vlad
 AddCheckpx(160,65,2)	-- Eye of Vlad
+--AddCheckpx(165,75,1)	-- Sword Card (JP)
+--AddCheckpx(95,85,1)	-- Nosedevil Card
 end
 
 function KeyItemChecks()
@@ -451,14 +452,108 @@ AddCheckpx(215,155,2)	-- Trio
 AddCheckpx(250,130,2)	-- Ring of Arcana
 end
 
+-- Adding Equipment, Wanderer, Tourist Checks
+function EquipmentChecks()
+-- First Castle Checks
+AddCheckpx(25, 175, 1)	-- Holy Mail			(Equipment)
+AddCheckpx(50, 190, 1)	-- Jewel Sword			(Equipment)
+AddCheckpx(50, 130, 1)	-- Cloth Cape			(Equipment)
+AddCheckpx(80, 140, 1)	-- Sunglasses			(Equipment)
+AddCheckpx(295, 100, 1)	-- Gladius 			(Equipment)
+AddCheckpx(245, 90, 1)	-- Bronze Cuirass		(Equipment)
+AddCheckpx(250, 75, 1)	-- Holy Rod 			(Equipment)
+AddCheckpx(230, 90, 1)	-- Library Onyx 		(Equipment)
+AddCheckpx(195, 25, 1)	-- Falchion 			(Equipment)
+AddCheckpx(20, 110, 1)	-- Ankh of Life 		(Equipment)
+AddCheckpx(40, 90, 1)	-- Morningstar 			(Equipment)
+AddCheckpx(135, 35, 1)	-- Cutlass 			(Equipment)
+AddCheckpx(160, 95, 1)	-- Olrox Onyx 			(Equipment)
+AddCheckpx(150, 160, 1)	-- Estoc 			(Equipment)
+AddCheckpx(165, 75, 1)	-- Olrox Garnet 		(Equipment)
+AddCheckpx(65, 105, 1)	-- Sheild Rod 			(Equipment)
+AddCheckpx(100, 105, 1)	-- Blood Cloak 			(Equipment)
+AddCheckpx(95, 85, 1)	-- Holy Sword 			(Equipment)
+AddCheckpx(70, 95, 1)	-- Knight Sheild 		(Equipment)
+AddCheckpx(175, 120, 1)	-- Bandanna 			(Equipment)
+AddCheckpx(130, 135, 1)	-- Secret Boots 		(Equipment)
+AddCheckpx(200, 195, 1)	-- Knuckle Duster 		(Equipment)
+AddCheckpx(230, 190, 1)	-- Caverns Onyx 		(Equipment)
+AddCheckpx(155, 225, 1)	-- Combat Knife 		(Equipment)
+AddCheckpx(140, 235, 1)	-- Bloodstone 			(Equipment)
+AddCheckpx(120, 235, 1)	-- Icebrand 			(Equipment)
+AddCheckpx(115, 235, 1)	-- Walk Armor 			(Equipment)
+AddCheckpx(80, 155, 1)	-- Basilard			(Equipment/Wanderer)
+AddCheckpx(170, 110, 1)	-- Alucart Sword		(Equipment/Wanderer)
+AddCheckpx(295, 120, 1)	-- Jewel Knuckles		(Equipment/Wanderer)
+AddCheckpx(275, 50, 1)	-- Bekatowa			(Equipment/Wanderer)
+AddCheckpx(245, 55, 1)	-- Gold Plate			(Equipment/Wanderer)
+AddCheckpx(175, 15, 1)	-- Platinum Mail		(Equipment/Wanderer)
+AddCheckpx(10, 120, 1)	-- Mystic Pendant		(Equipment/Wanderer)
+AddCheckpx(50, 85, 1)	-- Goggles			(Equipment/Wanderer)
+AddCheckpx(70, 45, 1)	-- Silver Plate			(Equipment/Wanderer)
+AddCheckpx(180, 175, 1)	-- Nunchaku 			(Equipment/Wanderer)
+AddCheckpx(185, 190, 1)	-- Ring of Ares 		(Equipment/Wanderer)
+
+-- Second Castle Checks
+AddCheckpx(150, 235, 2)	-- Bastard Sword		(Equipment)
+AddCheckpx(140, 235, 2)	-- Royal Cloack			(Equipment)
+AddCheckpx(160, 210, 2)	-- Sword of Dawn		(Equipment)
+AddCheckpx(120, 210, 2)	-- Lightning Mail		(Equipment)
+AddCheckpx(20, 210, 2)	-- Dragon Helm			(Equipment)
+AddCheckpx(70, 195, 2)	-- Sun Stone			(Equipment)
+AddCheckpx(220, 210, 2)	-- Talwar			(Equipment)
+AddCheckpx(150, 175, 2)	-- Alucard Mail			(Equipment)
+AddCheckpx(155, 155, 2)	-- Sword of Hador		(Equipment)
+AddCheckpx(220, 165, 2)	-- Fury Plate			(Equipment)
+AddCheckpx(235, 110, 2)	-- Goddess Shield		(Equipment)
+AddCheckpx(20, 130, 2)	-- Shotel			(Equipment)
+AddCheckpx(140, 130, 2)	-- R. Caverns Diamond		(Equipment)
+AddCheckpx(205, 80, 2)	-- R. Caverns Garnet		(Equipment)
+AddCheckpx(275, 55, 2)	-- Alucard Shield		(Equipment)
+AddCheckpx(170, 45, 2)	-- Alucard Sword		(Equipment)
+AddCheckpx(195, 15, 2)	-- Necklace of J		(Equipment)
+AddCheckpx(200, 15, 2)	-- R. Catacombs Diamond		(Equipment)
+AddCheckpx(215, 80, 2)	-- Talisman			(Equipment)
+AddCheckpx(65, 175, 2)	-- Staurolite			(Equipment)
+AddCheckpx(105, 210, 2)	-- Moon Rod			(Equipment/Wanderer)
+AddCheckpx(40, 200, 2)	-- Luminus 			(Equipment/Wanderer)
+AddCheckpx(275, 190, 2)	-- Twilight Cloak		(Equipment/Wanderer)
+AddCheckpx(215, 145, 2)	-- Gram 			(Equipment/Wanderer)
+AddCheckpx(255, 85, 2)	-- Katana			(Equipment/Wanderer)
+AddCheckpx(130, 105, 2)	-- R. Caverns Opal		(Equipment/Wanderer)
+AddCheckpx(190, 55, 2)	-- Osafune Katana		(Equipment/Wanderer)
+AddCheckpx(265, 60, 2)	-- Beryl Circlet		(Equipment/Wanderer)
+AddCheckpx(70, 160, 2)	-- R. Library Opal		(Equipment/Wanderer)
+AddCheckpx(75, 160, 2)	-- Badelaire			(Equipment/Wanderer)
+end
+
+function TouristChecks()
+-- First Castle Checks
+AddCheckpx(300, 130, 1)	-- Telescope / Bottom of Outer Wall		(Tourist/Wanderer)
+AddCheckpx(255, 25, 1)	-- Cloaked Knight in Clock Tower		(Tourist/Wanderer)
+AddCheckpx(125, 195, 1)	-- Waterfall Cave with Frozen Shade		(Tourist/Wanderer)
+AddCheckpx(80, 90, 1)	-- Royal Chapel Confessional			(Tourist/Wanderer)
+AddCheckpx(95, 105, 1)	-- Green Tea / Colosseum Fountain		(Tourist/Wanderer)
+-- Second Castle Checks
+AddCheckpx(120, 235, 2)	-- High Potion / Window Sill			(Tourist/Wanderer)
+AddCheckpx(250, 145, 2)	-- R. Colosseum Zircon / R. Shield Rod	(Tourist/Wanderer)
+AddCheckpx(155, 150, 2)	-- Vats / R. Center Clock Room			(Tourist/Wanderer)
+AddCheckpx(85, 145, 2)	-- Meal Ticket / R. JoO Switch			(Tourist/Wanderer)
+AddCheckpx(185, 95, 2)	-- Library Card / R. Forbidden Route		(Tourist/Wanderer)
+AddCheckpx(135, 60, 2)	-- Life Apple / R. Demon Switch Door		(Tourist/Wanderer)
+AddCheckpx(110, 10, 2)	-- R. Catacombs Elixir / R. Spike Breaker	(Tourist/Wanderer)
+AddCheckpx(305, 75, 2)	-- R. Entrance Antivenom / R. Power of Wolf	(Tourist/Wanderer)
+end
 
 -- Add Event
 forms.addclick(pbLiveMap,PictureBoxClick)
 
 -- Add Checks
 RelicChecks()
-if(CheckSet>=1) then KeyItemChecks() end
-if(CheckSet>=2) then GuardedChecks() end
+if(CheckSet>=1) then KeyItemChecks()   end
+if(CheckSet>=2) then GuardedChecks()   end
+if(CheckSet>=3) then EquipmentChecks() end
+if(CheckSet>=4) then TouristChecks()   end
 
 -- Fix Annoying Warning Messages on Bizhawk 2.9 and above.
 BizVersion = client.getversion()
@@ -482,6 +577,4 @@ while EndScript == false do
 
 	AutoTimer()
 	emu.frameadvance()
-	
 end
-

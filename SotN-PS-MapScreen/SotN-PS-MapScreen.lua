@@ -530,14 +530,13 @@ end
 function TouristChecks()
 -- First Castle Checks
 AddCheckpx(300, 130, 1)	-- Telescope / Bottom of Outer Wall		(Tourist/Wanderer)
-AddCheckpx(255, 25, 1)	-- Cloaked Knight at top of Clock Tower		(Tourist/Wanderer)
+AddCheckpx(255, 25, 1)	-- Cloaked Knight in Clock Tower		(Tourist/Wanderer)
 AddCheckpx(125, 195, 1)	-- Waterfall Cave with Frozen Shade		(Tourist/Wanderer)
 AddCheckpx(80, 90, 1)	-- Royal Chapel Confessional			(Tourist/Wanderer)
 AddCheckpx(95, 105, 1)	-- Green Tea / Colosseum Fountain		(Tourist/Wanderer)
-
 -- Second Castle Checks
 AddCheckpx(120, 235, 2)	-- High Potion / Window Sill			(Tourist/Wanderer)
-AddCheckpx(250, 145, 2)	-- Zircon / R. Shield Rod			(Tourist/Wanderer)
+AddCheckpx(250, 145, 2)	-- R. Colosseum Zircon / R. Shield Rod	(Tourist/Wanderer)
 AddCheckpx(155, 150, 2)	-- Vats / R. Center Clock Room			(Tourist/Wanderer)
 AddCheckpx(85, 145, 2)	-- Meal Ticket / R. JoO Switch			(Tourist/Wanderer)
 AddCheckpx(185, 95, 2)	-- Library Card / R. Forbidden Route		(Tourist/Wanderer)
@@ -553,7 +552,7 @@ forms.addclick(pbLiveMap,PictureBoxClick)
 RelicChecks()
 if(CheckSet>=1) then KeyItemChecks()   end
 if(CheckSet>=2) then GuardedChecks()   end
-if(CheckSet>=3) then EquipmentChecks() end 
+if(CheckSet>=3) then EquipmentChecks() end
 if(CheckSet>=4) then TouristChecks()   end
 
 -- Fix Annoying Warning Messages on Bizhawk 2.9 and above.

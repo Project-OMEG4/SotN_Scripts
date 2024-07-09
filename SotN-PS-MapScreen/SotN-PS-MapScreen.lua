@@ -1,7 +1,7 @@
 -- Castlevania SotN Live Map Screen
 -- Written By MottZilla
 -- December 5th 2023
-
+-- July 9th 2024 - Updated checks to include Equipment and Tourist checks
 EndScript = false
 
 function CloseWindow()
@@ -260,7 +260,6 @@ print(stringbufA .. "," .. stringbufB)
 	if(curCastle == 2) then
 		rec_map2[castleX + (castleY*64)] = 1
 	end
-
 end
 
 function ChangeCastle()
@@ -345,7 +344,6 @@ function ChangeCastle()
 	forms.refresh(pbLiveMap)
 end
 
-
 function PictureBoxClick()
 	WX = forms.getMouseX(pbLiveMap)
 	WY = forms.getMouseY(pbLiveMap)
@@ -409,8 +407,8 @@ end
 function RelicChecks()
 AddCheckpx(240,90,1)	-- Soul of Bat
 AddCheckpx(295,40,1)	-- Fire of Bat
-AddCheckpx(80,65,1)		-- Echo of Bat
-AddCheckpx(40,60,2)		-- Force of Echo
+AddCheckpx(80,65,1)	-- Echo of Bat
+AddCheckpx(40,60,2)	-- Force of Echo
 AddCheckpx(305,75,1)	-- Soul of Wolf
 AddCheckpx(10,175,1)	-- Power of Wolf
 AddCheckpx(75,150,1)	-- Skill of Wolf
@@ -441,7 +439,7 @@ end
 
 function KeyItemChecks()
 AddCheckpx(225,150,1)	-- Gold Ring
-AddCheckpx(40,60,1)		-- Silver Ring
+AddCheckpx(40,60,1)	-- Silver Ring
 AddCheckpx(160,140,1)	-- Holy Glasses
 AddCheckpx(205,240,1)	-- Spikebreaker
 end
@@ -461,16 +459,16 @@ AddCheckpx(25, 175, 1)	-- Holy Mail			(Equipment)
 AddCheckpx(50, 190, 1)	-- Jewel Sword			(Equipment)
 AddCheckpx(50, 130, 1)	-- Cloth Cape			(Equipment)
 AddCheckpx(80, 140, 1)	-- Sunglasses			(Equipment)
-AddCheckpx(295, 100, 1)	-- Gladius 				(Equipment)
+AddCheckpx(295, 100, 1)	-- Gladius 			(Equipment)
 AddCheckpx(245, 90, 1)	-- Bronze Cuirass		(Equipment)
 AddCheckpx(250, 75, 1)	-- Holy Rod 			(Equipment)
 AddCheckpx(230, 90, 1)	-- Library Onyx 		(Equipment)
 AddCheckpx(195, 25, 1)	-- Falchion 			(Equipment)
 AddCheckpx(20, 110, 1)	-- Ankh of Life 		(Equipment)
 AddCheckpx(40, 90, 1)	-- Morningstar 			(Equipment)
-AddCheckpx(135, 35, 1)	-- Cutlass 				(Equipment)
+AddCheckpx(135, 35, 1)	-- Cutlass 			(Equipment)
 AddCheckpx(160, 95, 1)	-- Olrox Onyx 			(Equipment)
-AddCheckpx(150, 160, 1)	-- Estoc 				(Equipment)
+AddCheckpx(150, 160, 1)	-- Estoc 			(Equipment)
 AddCheckpx(165, 75, 1)	-- Olrox Garnet 		(Equipment)
 AddCheckpx(65, 105, 1)	-- Sheild Rod 			(Equipment)
 AddCheckpx(100, 105, 1)	-- Blood Cloak 			(Equipment)
@@ -479,19 +477,19 @@ AddCheckpx(70, 95, 1)	-- Knight Sheild 		(Equipment)
 AddCheckpx(175, 120, 1)	-- Bandanna 			(Equipment)
 AddCheckpx(130, 135, 1)	-- Secret Boots 		(Equipment)
 AddCheckpx(200, 195, 1)	-- Knuckle Duster 		(Equipment)
-AddCheckpx(230, 190, 1)	-- Caverns Onyx 		(Equipment)  (225,190,1) might be more accurate
+AddCheckpx(230, 190, 1)	-- Caverns Onyx 		(Equipment)
 AddCheckpx(155, 225, 1)	-- Combat Knife 		(Equipment)
 AddCheckpx(140, 235, 1)	-- Bloodstone 			(Equipment)
 AddCheckpx(120, 235, 1)	-- Icebrand 			(Equipment)
 AddCheckpx(115, 235, 1)	-- Walk Armor 			(Equipment)
-AddCheckpx(80, 155, 1)	-- Basilard				(Equipment/Wanderer)
+AddCheckpx(80, 155, 1)	-- Basilard			(Equipment/Wanderer)
 AddCheckpx(170, 110, 1)	-- Alucart Sword		(Equipment/Wanderer)
 AddCheckpx(295, 120, 1)	-- Jewel Knuckles		(Equipment/Wanderer)
-AddCheckpx(275, 50, 1)	-- Bekatowa				(Equipment/Wanderer)
+AddCheckpx(275, 50, 1)	-- Bekatowa			(Equipment/Wanderer)
 AddCheckpx(245, 55, 1)	-- Gold Plate			(Equipment/Wanderer)
 AddCheckpx(175, 15, 1)	-- Platinum Mail		(Equipment/Wanderer)
 AddCheckpx(10, 120, 1)	-- Mystic Pendant		(Equipment/Wanderer)
-AddCheckpx(50, 85, 1)	-- Goggles				(Equipment/Wanderer)
+AddCheckpx(50, 85, 1)	-- Goggles			(Equipment/Wanderer)
 AddCheckpx(70, 45, 1)	-- Silver Plate			(Equipment/Wanderer)
 AddCheckpx(180, 175, 1)	-- Nunchaku 			(Equipment/Wanderer)
 AddCheckpx(185, 190, 1)	-- Ring of Ares 		(Equipment/Wanderer)
@@ -503,25 +501,25 @@ AddCheckpx(160, 210, 2)	-- Sword of Dawn		(Equipment)
 AddCheckpx(120, 210, 2)	-- Lightning Mail		(Equipment)
 AddCheckpx(20, 210, 2)	-- Dragon Helm			(Equipment)
 AddCheckpx(70, 195, 2)	-- Sun Stone			(Equipment)
-AddCheckpx(220, 210, 2)	-- Talwar				(Equipment)
+AddCheckpx(220, 210, 2)	-- Talwar			(Equipment)
 AddCheckpx(150, 175, 2)	-- Alucard Mail			(Equipment)
 AddCheckpx(155, 155, 2)	-- Sword of Hador		(Equipment)
 AddCheckpx(220, 165, 2)	-- Fury Plate			(Equipment)
 AddCheckpx(235, 110, 2)	-- Goddess Shield		(Equipment)
-AddCheckpx(20, 130, 2)	-- Shotel				(Equipment)
-AddCheckpx(140, 130, 2)	-- R. Caverns Diamond	(Equipment)
-AddCheckpx(205, 80, 2)	-- R. Caverns Garnet	(Equipment)
+AddCheckpx(20, 130, 2)	-- Shotel			(Equipment)
+AddCheckpx(140, 130, 2)	-- R. Caverns Diamond		(Equipment)
+AddCheckpx(205, 80, 2)	-- R. Caverns Garnet		(Equipment)
 AddCheckpx(275, 55, 2)	-- Alucard Shield		(Equipment)
 AddCheckpx(170, 45, 2)	-- Alucard Sword		(Equipment)
 AddCheckpx(195, 15, 2)	-- Necklace of J		(Equipment)
-AddCheckpx(200, 15, 2)	-- R. Catacombs Diamond	(Equipment)
-AddCheckpx(215, 80, 2)	-- Talisman				(Equipment)
+AddCheckpx(200, 15, 2)	-- R. Catacombs Diamond		(Equipment)
+AddCheckpx(215, 80, 2)	-- Talisman			(Equipment)
 AddCheckpx(65, 175, 2)	-- Staurolite			(Equipment)
-AddCheckpx(105, 210, 2)	-- Moon Rod				(Equipment/Wanderer)
-AddCheckpx(40, 200, 2)	-- Luminus 				(Equipment/Wanderer)
+AddCheckpx(105, 210, 2)	-- Moon Rod			(Equipment/Wanderer)
+AddCheckpx(40, 200, 2)	-- Luminus 			(Equipment/Wanderer)
 AddCheckpx(275, 190, 2)	-- Twilight Cloak		(Equipment/Wanderer)
-AddCheckpx(215, 145, 2)	-- Gram 				(Equipment/Wanderer)
-AddCheckpx(255, 85, 2)	-- Katana				(Equipment/Wanderer)
+AddCheckpx(215, 145, 2)	-- Gram 			(Equipment/Wanderer)
+AddCheckpx(255, 85, 2)	-- Katana			(Equipment/Wanderer)
 AddCheckpx(130, 105, 2)	-- R. Caverns Opal		(Equipment/Wanderer)
 AddCheckpx(190, 55, 2)	-- Osafune Katana		(Equipment/Wanderer)
 AddCheckpx(265, 60, 2)	-- Beryl Circlet		(Equipment/Wanderer)
@@ -531,17 +529,17 @@ end
 
 function TouristChecks()
 -- First Castle Checks
-AddCheckpx(300, 130, 1)	-- Telescope / Bottom of Outer Wall			(Tourist/Wanderer)
+AddCheckpx(300, 130, 1)	-- Telescope / Bottom of Outer Wall		(Tourist/Wanderer)
 AddCheckpx(255, 25, 1)	-- Cloaked Knight at top of Clock Tower		(Tourist/Wanderer)
-AddCheckpx(125, 195, 1)	-- Waterfall Cave with Frozen Shade			(Tourist/Wanderer)
-AddCheckpx(80, 90, 1)	-- Royal Chapel Confessional				(Tourist/Wanderer)
-AddCheckpx(95, 105, 1)	-- Green Tea / Colosseum Fountain			(Tourist/Wanderer)
+AddCheckpx(125, 195, 1)	-- Waterfall Cave with Frozen Shade		(Tourist/Wanderer)
+AddCheckpx(80, 90, 1)	-- Royal Chapel Confessional			(Tourist/Wanderer)
+AddCheckpx(95, 105, 1)	-- Green Tea / Colosseum Fountain		(Tourist/Wanderer)
 
 -- Second Castle Checks
-AddCheckpx(120, 235, 2)	-- High Potion / Window Sill				(Tourist/Wanderer)
-AddCheckpx(250, 145, 2)	-- Zircon / R. Shield Rod					(Tourist/Wanderer)
-AddCheckpx(155, 150, 2)	-- Vats / R. Center Clock Room				(Tourist/Wanderer)
-AddCheckpx(85, 145, 2)	-- Meal Ticket / R. JoO Switch				(Tourist/Wanderer)
+AddCheckpx(120, 235, 2)	-- High Potion / Window Sill			(Tourist/Wanderer)
+AddCheckpx(250, 145, 2)	-- Zircon / R. Shield Rod			(Tourist/Wanderer)
+AddCheckpx(155, 150, 2)	-- Vats / R. Center Clock Room			(Tourist/Wanderer)
+AddCheckpx(85, 145, 2)	-- Meal Ticket / R. JoO Switch			(Tourist/Wanderer)
 AddCheckpx(185, 95, 2)	-- Library Card / R. Forbidden Route		(Tourist/Wanderer)
 AddCheckpx(135, 60, 2)	-- Life Apple / R. Demon Switch Door		(Tourist/Wanderer)
 AddCheckpx(110, 10, 2)	-- R. Catacombs Elixir / R. Spike Breaker	(Tourist/Wanderer)

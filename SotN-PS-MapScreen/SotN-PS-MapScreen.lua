@@ -417,7 +417,7 @@ AddCheckpx(295,40,1)	-- Fire of Bat
 AddCheckpx(80,65,1)	-- Echo of Bat
 AddCheckpx(40,60,2)	-- Force of Echo
 AddCheckpx(305,75,1)	-- Soul of Wolf
-AddCheckpx(10,175,1)	-- Power of Wolf
+AddCheckpx(15,175,1)	-- Power of Wolf
 AddCheckpx(75,150,1)	-- Skill of Wolf
 AddCheckpx(105,95,1)	-- Form of Mist
 AddCheckpx(155,30,1)	-- Power of Mist
@@ -489,7 +489,7 @@ AddCheckpx(70, 95, 1)	-- Knight Sheild 		(Equipment)
 AddCheckpx(175, 120, 1)	-- Bandanna 			(Equipment)
 AddCheckpx(120, 180, 1)	-- Secret Boots 		(Equipment)
 AddCheckpx(200, 195, 1)	-- Knuckle Duster 		(Equipment)
-AddCheckpx(230, 190, 1)	-- Caverns Onyx 		(Equipment)
+AddCheckpx(225, 190, 1)	-- Caverns Onyx 		(Equipment)
 AddCheckpx(155, 225, 1)	-- Combat Knife 		(Equipment)
 AddCheckpx(140, 235, 1)	-- Bloodstone 			(Equipment)
 AddCheckpx(120, 235, 1)	-- Icebrand 			(Equipment)
@@ -503,7 +503,7 @@ AddCheckpx(175, 15, 1)	-- Platinum Mail		(Equipment/Wanderer)
 AddCheckpx(10, 120, 1)	-- Mystic Pendant		(Equipment/Wanderer)
 AddCheckpx(50, 85, 1)	-- Goggles			(Equipment/Wanderer)
 AddCheckpx(70, 45, 1)	-- Silver Plate			(Equipment/Wanderer)
-AddCheckpx(180, 175, 1)	-- Nunchaku 			(Equipment/Wanderer)
+AddCheckpx(190, 175, 1)	-- Nunchaku 			(Equipment/Wanderer)
 AddCheckpx(185, 190, 1)	-- Ring of Ares 		(Equipment/Wanderer)
 
 -- Second Castle Checks

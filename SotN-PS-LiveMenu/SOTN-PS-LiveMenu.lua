@@ -384,6 +384,9 @@ forms.drawText(pbLiveMenu,brsX2+60,500,"Demon | Nose Demon",txcolor,bgcolor,ffon
 forms.drawText(pbLiveMenu,brsX2+60,520,"Level:    "..f_demonLevel.." | "..f_noseLevel,txcolor,bgcolor,ffont)
 forms.drawText(pbLiveMenu,brsX2+60,540,"Next  XP: "..f_demonExp.." | "..f_noseExp,  txcolor,bgcolor,ffont)
 
+-- Version
+forms.drawText(pbLiveMenu,660,610,"Ver 0.1",txcolor,bgcolor,10)
+
   forms.refresh(pbLiveMenu) -- Refresh the form
 end
 

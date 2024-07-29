@@ -5,7 +5,7 @@
 -- July 18 2024 - Searching SotN for memory addresses
 -- July 20 2024 - Mottzilla's LiveMap included in LiveMenu (trouble running both scripts at the same time)
 -- July 22 2024 - Push to Github for version 1.0 release
-
+--[[
 EndScript = false
 
 function CloseWindow()
@@ -337,7 +337,7 @@ if checkRelicSet[CheckSet] then forms.drawText(pbLiveMenu, br_txtXpos, 550, chec
 
 
 
---]]-
+
 --------------------------------------------------------------------
   -- Refresh the form
     forms.refresh(pbLiveMenu)
@@ -740,4 +740,4 @@ while EndScript == false do
 
 	AutoTimer()
   emu.frameadvance()
-end
+end]]--

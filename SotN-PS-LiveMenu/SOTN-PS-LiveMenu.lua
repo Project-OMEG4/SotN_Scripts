@@ -166,7 +166,6 @@ function UpdateText()
   forms.drawText(pbLiveMenu,tr_x,240,KillStr,       txcolor,bgcolor,18)
 
   -- Time Stuff
-  BuildAutoTimerStr()
   TimeStr     = ""
   TimeHours   = memory.read_u16_le(0x097C30,MainRAM)
   TimeMinutes = memory.read_u16_le(0x097C34,MainRAM)

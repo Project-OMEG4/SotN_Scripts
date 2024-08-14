@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="khaos-widget" content="width=device-width, initial-scale=1.0">
+        <title>Manual Tracker (with Export)</title>
+        <style>
+                body { margin: 0; padding: 0; height: 100%; background-color: darkslategrey; min-width: 520px; }
+                #seedInfo { padding: 0.1em; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 4vw; color: white; text-shadow: 1px 1px 2px black, 0 0 1em black, 0 0 0.2em black; }
+                .column { float: left; }
+                .portlet { padding: 0.1em; width: 6vw; height: 6vw; }
+                .relic { width: 100%; height: 100%; image-rendering: pixelated; }
+                .uncollected { filter: grayscale(100%) brightness(50%); }
+                .portlet-header { padding: 0.2em 0.3em; margin-bottom: 0.5em; position: relative; }
+                .portlet-toggle { position: absolute; top: 50%; right: 0; margin-top: -8px; }
+                .portlet-content { padding: 0.4em; }
+                .portlet-placeholder { border: 1px dotted black; margin: 0 1em 1em 0; height: 50px; }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+</head>
+
+<body>
+<!-- Extra Button -->
+        <div style="padding: 5px; text-align: center;">
+                <button onclick="downloadLayout();">Download Layout</button><br><br>
+        </div>
+<!-- End Button -->
+        <div id="tracker">
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="1"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="SoulOfBat" src="../Images/SoulOfBat.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="5"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="SoulOfWolf" src="../Images/SoulOfWolf.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="31"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="GoldRing" src="../Images/GoldRing.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="26"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="HeartOfVlad" src="../Images/HeartOfVlad.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="8"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="FormOfMist" src="../Images/FormOfMist.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="6"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="PowerOfWolf" src="../Images/PowerOfWolf.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="32"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="SilverRing" src="../Images/SilverRing.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="27"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="ToothOfVlad" src="../Images/ToothOfVlad.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="9"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="PowerOfMist" src="../Images/PowerOfMist.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="7"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="SkillOfWolf" src="../Images/SkillOfWolf.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="33"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="SpikeBreaker" src="../Images/SpikeBreaker.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="28"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="RibOfVlad" src="../Images/RibOfVlad.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="14"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="LeapStone" src="../Images/LeapStone.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="18"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="MermanStatue" src="../Images/MermanStatue.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="17"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="JewelOfOpen" src="../Images/JewelOfOpen.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="29"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="RingOfVlad" src="../Images/RingOfVlad.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="13"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="GravityBoots" src="../Images/GravityBoots.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="15"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="HolySymbol" src="../Images/HolySymbol.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="34"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="HolyGlasses" src="../Images/HolyGlasses.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="30"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="EyeOfVlad" src="../Images/EyeOfVlad.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="22"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="DemonCard" src="../Images/DemonCard.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="25"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="NoseDevilCard" src="../Images/NoseDevilCard.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="21"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="FaerieCard" src="../Images/FaerieCard.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="4"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="ForceOfEcho" src="../Images/ForceOfEcho.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="10"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="GasCloud" src="../Images/GasCloud.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="11"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="CubeOfZoe" src="../Images/CubeOfZoe.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="24"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="SpriteCard" src="../Images/SpriteCard.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="20"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="GhostCard" src="../Images/GhostCard.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="2"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="FireOfBat" src="../Images/FireOfBat.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="12"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="SpiritOrb" src="../Images/SpiritOrb.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="16"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="FaerieScroll" src="../Images/FaerieScroll.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="35"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="Claymore" src="../Images/Claymore.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="23"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="SwordCard" src="../Images/SwordCard.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="19"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="BatCard" src="../Images/BatCard.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="3"><img class="relic uncollected ui-sortable-handle ui-widget-header ui-corner-all" id="EchoOfBat" src="../Images/EchoOfBat.png" alt=""></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+                <div class="column ui-sortable">
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" data-index="0"></div>
+                </div>
+        </div>
+</body>
+<script>
+const mainContainer = document.getElementById('tracker');
+var slots = [];
+let relicStates = [];
+var bitFlags = [];
+
+for (let i = 0; i < 30; i++) { 
+        bitFlags.push(Math.pow(2, i)); 
+}
+
+function updateRelic(element) { 
+        if ($(element).hasClass('uncollected')) { 
+                $(element).removeClass('uncollected'); 
+        } 
+        else { 
+                $(element).addClass('uncollected'); 
+        }
+}
+
+function setSLots() {
+    slots = [];
+    for (let i = 0; i < mainContainer.children.length; i++) {
+        slots.push([]);
+        let cells = Array.from(mainContainer.children[i].children);
+        cells.forEach(cell => {
+            let id = cell.dataset.index;
+            if (id == null || id == undefined) { id = 0; }
+            slots[slots.length - 1].push(id);
+        });
+    }
+}
+
+function initializeCells() {
+        $(".column").sortable({
+                connectWith: ".column",
+                handle: ".relic",
+                cancel: ".portlet-toggle",
+                placeholder: "portlet-placeholder ui-corner-all"
+        });
+        $(".portlet").mouseup(function () { setSLots(); });
+        $(".relic").on("mousedown", function (e) { updateRelic(e.target); });
+        $(".portlet")
+
+        .addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
+        .find(".relic")
+        .addClass("ui-widget-header ui-corner-all")
+        .prepend("<span class='ui-icon ui-icon-minusthick portlet-toggle'></span>");
+}
+
+// Initiate on document load
+$(function () { initializeCells();});
+
+// ----------------------------------------------------------------------------------------------------------------------------------------    
+// Added 2024.04.05 for some export functionality and small QOL update
+// ----------------------------------------------------------------------------------------------------------------------------------------
+var layout = [];
+
+ // Function to get the data-index of each portlet and organize them into a nested array. Drills down the DOM until it 
+ // gets the value of the data-index within column and row
+ function getDataIndices() {
+        var tracker = document.getElementById('tracker');
+        var columns = tracker.getElementsByClassName('column ui-sortable');
+        var dataIndices = [];
+
+        for (var i = 0; i < columns.length; i++) {
+                var portlets = columns[i].getElementsByClassName('portlet');
+                var columnDataIndices = [];
+                for (var j = 0; j < portlets.length; j++) {
+                        columnDataIndices.push(portlets[j].getAttribute('data-index'));
+                }
+                dataIndices.push(columnDataIndices);
+        }
+        return dataIndices;
+}
+
+// Using jQuery to update the array when an item is moved/updated (otherwise it'd always return the initial loadout)
+$(function() {
+        $('.column.ui-sortable').sortable({
+                update: function(event, ui) {
+                        layout = getDataIndices();  // Update the layout array with the data indices after each update
+                }
+        }).disableSelection();
+});
+
+// Download button script that exports the created arrays as "newlayout.ini" and gets it into the tracker format
+function downloadLayout() {
+        var layout = getDataIndices();
+
+        var numericLayout = layout.map(row => row.map(item => Number(item)));   // Map out the array from strings to numbers
+        var formattedData = JSON.stringify(numericLayout, null, 2);             // Format the data with indentation and raw numbers
+        var dataStr = "data:text/plain;charset=utf-8," + encodeURIComponent(formattedData);
+        var downloadAnchorNode = document.createElement('a');
+
+        downloadAnchorNode.setAttribute("href", dataStr);
+        downloadAnchorNode.setAttribute("download", "newlayout.ini");
+        document.body.appendChild(downloadAnchorNode);  // Just for Mozilla/Firefox browsers (just in case) 
+
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+}
+
+// Small QOL update to provide relic name on hover in a tooltip
+document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll('.relic');
+        images.forEach(image => {
+                const src = image.getAttribute('src');
+                const filename = src.split('/').pop().split('.').shift();       // Grabs just the filename from src="../Images/SwordCard.png"
+                const spacedFilename = addSpacesToUppercase(filename);          // Adds a space between words e.g. "Sword Card"
+                image.setAttribute('title', spacedFilename);                    // adds title = spacedFilename to all image tags
+        });
+});
+
+// Tooltip formatting; add a space between each uppercase letter with some regex: JewelOfOpen => Jewel of Open
+function addSpacesToUppercase(inputString) { return inputString.replace(/([A-Z])/g, ' $1'); }
+</script>
+</html>
